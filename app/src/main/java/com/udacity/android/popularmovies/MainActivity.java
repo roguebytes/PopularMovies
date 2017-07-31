@@ -60,18 +60,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if (movieManager.hasMovies()) {
                     Log.v("message", "MovieManager has movies!");
+                    // Get images for movies
+
+                    // Populate the GridView
                 }
 
-
-//                try {
-//                    String[] movieArray = MovieDBJsonUtils.getSimpleMovieStringsFromJson(MainActivity.this, movieSearchResults);
-//                    Log.v("JSON", "Got movieArray");
-//                } catch(JSONException e) {
-//                    e.printStackTrace();
-//                }
-
-                // Get images for movies
-                // Populate the GridView
             }
 
 

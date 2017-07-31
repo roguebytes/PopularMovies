@@ -20,8 +20,32 @@ public class MovieManager {
         }
     }
 
+    /**
+     * Public Accessors
+     */
+
     public Boolean hasMovies() {
         return movieItems != null && movieItems.length > 0;
+    }
+
+    public int movieCount() {
+        return movieItems.length;
+    }
+
+    public MovieItem getItemAtIndex(int i) {
+        return movieItems[i];
+    }
+
+    public String getTitleAtIndex(int i) {
+        return movieItems[i].getTitle();
+    }
+
+    public String getPosterPathAtIndex(int i) {
+        return movieItems[i].getPosterPath();
+    }
+
+    public Double getPopularityAtIndex(int i) {
+        return movieItems[i].getPopularity();
     }
 
 }
