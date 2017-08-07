@@ -48,4 +48,8 @@ public class MovieManager {
         return movieItems[i].getPopularity();
     }
 
+    public MovieItem[] getAllMovieItems() {
+        return this.movieItems;
+    }
+
 }

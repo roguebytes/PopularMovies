@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.udacity.android.popularmovies.api.ApiConstant;
+import com.udacity.android.popularmovies.model.MovieAdapter;
+import com.udacity.android.popularmovies.model.MovieItem;
 import com.udacity.android.popularmovies.model.MovieManager;
 import com.udacity.android.popularmovies.utilities.MovieDBJsonUtils;
 import com.udacity.android.popularmovies.utilities.NetworkUtils;
@@ -14,10 +16,12 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
     private MovieManager movieManager = null;
+    private MovieAdapter movieAdapter = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +64,11 @@ public class MainActivity extends AppCompatActivity {
 
                 if (movieManager.hasMovies()) {
                     Log.v("message", "MovieManager has movies!");
+                    MovieItem[] movieList = movieManager.getAllMovieItems();
+//                    movieAdapter = new MovieAdapter(, Arrays.asList(movieList));
+
                     // Get images for movies
+
 
                     // Populate the GridView
                 }
