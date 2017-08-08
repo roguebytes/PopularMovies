@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -113,6 +115,12 @@ public class MainActivity extends AppCompatActivity {
                     // Get a reference to the GridView, and attach this adapter to it
                     GridView gridView = (GridView) findViewById(R.id.movie_grid);
                     gridView.setAdapter(movieAdapter);
+                    gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                            Log.v("message", "GridView Item Selected");
+                        }
+                    });
                 }
             }
         }
