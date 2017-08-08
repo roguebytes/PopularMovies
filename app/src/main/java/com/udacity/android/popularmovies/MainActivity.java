@@ -2,6 +2,7 @@ package com.udacity.android.popularmovies;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -109,7 +110,7 @@ public class MainActivity extends AppCompatActivity {
                 if (movieManager.hasMovies()) {
                     Log.v("message", "MovieManager has movies!");
                     MovieItem[] movieList = movieManager.getAllMovieItems();
-                    Activity mainActivity = weakActivity.get();
+                    final Activity mainActivity = weakActivity.get();
                     movieAdapter = new MovieAdapter(mainActivity, Arrays.asList(movieList));
 
                     // Get a reference to the GridView, and attach this adapter to it
@@ -119,6 +120,8 @@ public class MainActivity extends AppCompatActivity {
                         @Override
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                             Log.v("message", "GridView Item Selected");
+                            Intent intent = new Intent(mainActivity, DetailActivity.class);
+                            startActivity(intent);
                         }
                     });
                 }
