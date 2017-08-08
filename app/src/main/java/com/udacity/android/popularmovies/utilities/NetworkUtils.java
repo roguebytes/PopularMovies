@@ -1,9 +1,6 @@
 package com.udacity.android.popularmovies.utilities;
 
-import android.net.Uri;
-import android.view.ViewDebug;
-
-import com.udacity.android.popularmovies.api.ApiConstant;
+import com.udacity.android.popularmovies.common.ApiConstants;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,7 +22,7 @@ public class NetworkUtils {
      * @return The URL with the secret API key appended
      */
     public static URL buildUrl(String searchQuery) {
-        String authSearchQueryString = searchQuery + ApiConstant.API_KEY;
+        String authSearchQueryString = searchQuery + ApiConstants.API_KEY;
 
         URL url = null;
         try {

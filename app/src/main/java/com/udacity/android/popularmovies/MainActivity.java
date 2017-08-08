@@ -11,14 +11,11 @@ import android.view.MenuItem;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import com.udacity.android.popularmovies.api.ApiConstant;
+import com.udacity.android.popularmovies.common.ApiConstants;
 import com.udacity.android.popularmovies.model.MovieAdapter;
 import com.udacity.android.popularmovies.model.MovieItem;
 import com.udacity.android.popularmovies.model.MovieManager;
-import com.udacity.android.popularmovies.utilities.MovieDBJsonUtils;
 import com.udacity.android.popularmovies.utilities.NetworkUtils;
-
-import org.json.JSONException;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -72,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
      * This method retrieves a list of the current popular movies from the Movie DB
      */
     private void makeMovieDBSearchQuery() {
-        String movieQuery = ApiConstant.POPULAR_MOVIES_URL;
+        String movieQuery = ApiConstants.POPULAR_MOVIES_URL;
         URL movieSearchUrl = NetworkUtils.buildUrl(movieQuery);
 
         new MovieDBQueryTask(this).execute(movieSearchUrl);

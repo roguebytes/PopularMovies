@@ -6,14 +6,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 import com.udacity.android.popularmovies.R;
-import com.udacity.android.popularmovies.api.ApiConstant;
-import com.udacity.android.popularmovies.utilities.NetworkUtils;
+import com.udacity.android.popularmovies.common.ApiConstants;
 
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -60,7 +57,7 @@ public class MovieAdapter extends ArrayAdapter<MovieItem> {
         ImageView iconView = (ImageView) convertView.findViewById(R.id.movie_item_icon);
 //        iconView.setImageResource(movieItem.image);
 
-        String posterQueryPath = ApiConstant.IMAGE_BASE_URL + ApiConstant.IMAGE_DEFAULT_SIZE + movieItem.getPosterPath();
+        String posterQueryPath = ApiConstants.IMAGE_BASE_URL + ApiConstants.IMAGE_DEFAULT_SIZE + movieItem.getPosterPath();
 //        URL posterUrl = NetworkUtils.buildUrl(posterQuery);
 
         Picasso.with(convertView.getContext()).load(posterQueryPath).into(iconView);
