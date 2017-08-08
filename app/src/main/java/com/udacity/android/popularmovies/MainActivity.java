@@ -12,6 +12,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.udacity.android.popularmovies.common.ApiConstants;
+import com.udacity.android.popularmovies.common.AppConstants;
 import com.udacity.android.popularmovies.model.MovieAdapter;
 import com.udacity.android.popularmovies.model.MovieItem;
 import com.udacity.android.popularmovies.model.MovieManager;
@@ -32,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        makeMovieDBSearchQuery();
+        makeMovieDBSearchQuery(AppConstants.SORT_KEY_TOP_RATED);
     }
 
     @Override
@@ -42,24 +43,17 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    // COMPLETED (11) Override onOptionsItemSelected
-    // COMPLETED (12) Within onOptionsItemSelected, get the ID of the item that was selected
-    // COMPLETED (13) If the item's ID is R.id.action_search, show a Toast and return true to tell Android that you've handled this menu click
-    // COMPLETED (14) Don't forgot to call .show() on your Toast
-    // COMPLETED (15) If you do NOT handle the menu click, return super.onOptionsItemSelected to let Android handle the menu click
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemThatWasClickedId = item.getItemId();
         if (itemThatWasClickedId == R.id.action_sort_top_rated) {
             Context context = MainActivity.this;
-            String textToShow = "Sort Top-Rated clicked";
-            Toast.makeText(context, textToShow, Toast.LENGTH_SHORT).show();
+            this.makeMovieDBSearchQuery(AppConstants.SORT_KEY_TOP_RATED);
             return true;
         }
         else if (itemThatWasClickedId == R.id.action_sort_popular) {
             Context context = MainActivity.this;
-            String textToShow = "Sort Popular clicked";
-            Toast.makeText(context, textToShow, Toast.LENGTH_SHORT).show();
+            this.makeMovieDBSearchQuery(AppConstants.SORT_KEY_POPULAR);
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -68,8 +62,16 @@ public class MainActivity extends AppCompatActivity {
     /**
      * This method retrieves a list of the current popular movies from the Movie DB
      */
-    private void makeMovieDBSearchQuery() {
-        String movieQuery = ApiConstants.POPULAR_MOVIES_URL;
+    private void makeMovieDBSearchQuery(String sortKey) {
+        String movieQuery = "";
+
+        if (sortKey.equalsIgnoreCase(AppConstants.SORT_KEY_TOP_RATED)) {
+            movieQuery = ApiConstants.TOP_MOVIES_URL;
+        }
+        else if (sortKey.equalsIgnoreCase(AppConstants.SORT_KEY_POPULAR)) {
+            movieQuery = ApiConstants.POPULAR_MOVIES_URL;
+        }
+
         URL movieSearchUrl = NetworkUtils.buildUrl(movieQuery);
 
         new MovieDBQueryTask(this).execute(movieSearchUrl);
@@ -77,10 +79,8 @@ public class MainActivity extends AppCompatActivity {
 
     public class MovieDBQueryTask extends AsyncTask<URL, Void, String> {
         private final WeakReference<Activity> weakActivity;
-//        private Context mContext;
 
         public MovieDBQueryTask(Activity mainActivity) {
-//            mContext = context;
             this.weakActivity = new WeakReference<>(mainActivity);
         }
 
@@ -113,17 +113,8 @@ public class MainActivity extends AppCompatActivity {
                     // Get a reference to the GridView, and attach this adapter to it
                     GridView gridView = (GridView) findViewById(R.id.movie_grid);
                     gridView.setAdapter(movieAdapter);
-
-
-                    // Get images for movies
-
-
-                    // Populate the GridView
                 }
-
             }
-
-
         }
     }
 }
