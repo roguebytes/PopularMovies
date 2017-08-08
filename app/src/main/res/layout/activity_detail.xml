@@ -6,4 +6,30 @@
     android:layout_height="match_parent"
     tools:context="com.udacity.android.popularmovies.DetailActivity">
 
+    <TextView
+        android:id="@+id/detail_movie_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <ImageView
+        android:id="@+id/detail_movie_poster"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/detail_movie_synopsis"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/detail_movie_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/detail_movie_release_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+
 </android.support.constraint.ConstraintLayout>
