@@ -13,11 +13,16 @@ public class MovieItem {
     private Double voteAverage  = 0.0;
     private Double popularity   = 0.0;
     private Boolean hasVideo    = false;
+    private String releaseDate  = null;
+//    private String duration     = null;
 
-    public MovieItem(String title, Double popularity, String posterPath) {
+    public MovieItem(String title, Double popularity, String posterPath, String releaseDate, String overview/*, String duration*/) {
         this.title          = title;
         this.popularity     = popularity;
         this.posterPath     = posterPath;
+        this.overview       = overview;
+        this.releaseDate    = releaseDate;
+//        this.duration       = duration;
     }
 
     public String getTitle() {
@@ -31,5 +36,17 @@ public class MovieItem {
     public String getPosterPath() {
         return this.posterPath;
     }
+
+    public String getOverview() {
+        return this.overview;
+    }
+
+    public String getReleaseDate() {
+        return this.releaseDate;
+    }
+
+//    public String getDuration() {
+//        return this.duration;
+//    }
 
 }

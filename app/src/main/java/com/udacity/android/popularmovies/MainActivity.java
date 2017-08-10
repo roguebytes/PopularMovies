@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.udacity.android.popularmovies.common.ApiConstants;
 import com.udacity.android.popularmovies.common.AppConstants;
@@ -30,13 +29,14 @@ public class MainActivity extends AppCompatActivity {
 
     private MovieManager movieManager = null;
     private MovieAdapter movieAdapter = null;
+    private String sort_key = AppConstants.SORT_KEY_TOP_RATED;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        makeMovieDBSearchQuery(AppConstants.SORT_KEY_TOP_RATED);
+        makeMovieDBSearchQuery(sort_key);
     }
 
     @Override
@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
                 if (movieManager.hasMovies()) {
                     Log.v("message", "MovieManager has movies!");
-                    MovieItem[] movieList = movieManager.getAllMovieItems();
+                    final MovieItem[] movieList = movieManager.getAllMovieItems();
                     final Activity mainActivity = weakActivity.get();
                     movieAdapter = new MovieAdapter(mainActivity, Arrays.asList(movieList));
 
@@ -121,6 +121,12 @@ public class MainActivity extends AppCompatActivity {
                         public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                             Log.v("message", "GridView Item Selected");
                             Intent intent = new Intent(mainActivity, DetailActivity.class);
+                            intent.putExtra("posterPath", movieList[i].getPosterPath());
+                            intent.putExtra("title", movieList[i].getTitle());
+                            intent.putExtra("popularity", movieList[i].getPopularity());
+                            intent.putExtra("releaseDate", movieList[i].getReleaseDate());
+                            intent.putExtra("overview", movieList[i].getOverview());
+
                             startActivity(intent);
                         }
                     });

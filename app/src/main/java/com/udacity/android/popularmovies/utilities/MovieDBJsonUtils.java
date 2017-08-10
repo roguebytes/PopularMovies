@@ -84,8 +84,9 @@ public final class MovieDBJsonUtils {
         for(int i = 0; i < movieArray.length(); i++) {
             // These are the values that will be collected
             String title;
-//            String overview;
+            String overview;
             String posterPath;
+            String releaseDate;
 //            String backdropPath;
 //            Double voteAverage;
             Double popularity;
@@ -102,11 +103,13 @@ public final class MovieDBJsonUtils {
 
             // Get the JSON object representing the movie
             JSONObject movieJSONObject = movieArray.getJSONObject(i);
-            title = movieJSONObject.getString(MDB_TITLE);
-            popularity = movieJSONObject.getDouble(MDB_POPULARITY);
-            posterPath = movieJSONObject.getString(MDB_POSTER_PATH);
+            title           = movieJSONObject.getString(MDB_TITLE);
+            popularity      = movieJSONObject.getDouble(MDB_POPULARITY);
+            posterPath      = movieJSONObject.getString(MDB_POSTER_PATH);
+            releaseDate     = movieJSONObject.getString(MDB_RELEASE_DATE);
+            overview        = movieJSONObject.getString(MDB_OVERVIEW);
 
-            MovieItem movieObject = new MovieItem(title, popularity, posterPath);
+            MovieItem movieObject = new MovieItem(title, popularity, posterPath, releaseDate, overview);
             movieItems[i] = movieObject;
 //            parsedMovieData[i] = movieObject;
 
