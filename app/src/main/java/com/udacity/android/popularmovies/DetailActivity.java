@@ -9,6 +9,11 @@ import android.widget.TextView;
 import com.squareup.picasso.Picasso;
 import com.udacity.android.popularmovies.common.ApiConstants;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 public class DetailActivity extends AppCompatActivity {
 
     private String posterPath   = "";
@@ -76,6 +81,17 @@ public class DetailActivity extends AppCompatActivity {
 
     private void setMovieReleaseDate() {
         TextView releaseDateTextView = (TextView) findViewById(R.id.detail_movie_year);
-        releaseDateTextView.setText(this.releaseDate);
+        // Convert String to date and then extact the year component
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        try {
+            Date d = sdf.parse(this.releaseDate);
+            Calendar cal = Calendar.getInstance();
+            cal.setTime(d);
+            int year = cal.get(Calendar.YEAR);
+            releaseDateTextView.setText(String.valueOf(year));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
     }
 }
