@@ -44,10 +44,6 @@ public class MovieManager {
         return movieItems[i].getPosterPath();
     }
 
-    public Double getPopularityAtIndex(int i) {
-        return movieItems[i].getPopularity();
-    }
-
     public MovieItem[] getAllMovieItems() {
         return this.movieItems;
     }

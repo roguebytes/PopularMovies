@@ -16,21 +16,16 @@ public class MovieItem {
     private String releaseDate  = null;
 //    private String duration     = null;
 
-    public MovieItem(String title, Double popularity, String posterPath, String releaseDate, String overview/*, String duration*/) {
+    public MovieItem(String title, String posterPath, String releaseDate, String overview, Double voteAverage) {
         this.title          = title;
-        this.popularity     = popularity;
         this.posterPath     = posterPath;
         this.overview       = overview;
         this.releaseDate    = releaseDate;
-//        this.duration       = duration;
+        this.voteAverage    = voteAverage;
     }
 
     public String getTitle() {
         return this.title;
-    }
-
-    public Double getPopularity() {
-        return this.popularity;
     }
 
     public String getPosterPath() {
@@ -45,8 +40,8 @@ public class MovieItem {
         return this.releaseDate;
     }
 
-//    public String getDuration() {
-//        return this.duration;
-//    }
+    public Double getVoteAverage() {
+        return this.voteAverage;
+    }
 
 }

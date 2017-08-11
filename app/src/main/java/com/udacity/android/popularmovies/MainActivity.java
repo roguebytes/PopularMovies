@@ -123,9 +123,9 @@ public class MainActivity extends AppCompatActivity {
                             Intent intent = new Intent(mainActivity, DetailActivity.class);
                             intent.putExtra("posterPath", movieList[i].getPosterPath());
                             intent.putExtra("title", movieList[i].getTitle());
-                            intent.putExtra("popularity", movieList[i].getPopularity());
                             intent.putExtra("releaseDate", movieList[i].getReleaseDate());
                             intent.putExtra("overview", movieList[i].getOverview());
+                            intent.putExtra("voteAverage", movieList[i].getVoteAverage());
 
                             startActivity(intent);
                         }

@@ -15,19 +15,6 @@ import java.net.HttpURLConnection;
 
 public final class MovieDBJsonUtils {
 
-//    private JSONObject[] movieObjects = null;
-//    private Context appContext = null;
-
-//    public MovieDBJsonUtils(Context context, String movieJSONString) {
-//        appContext = context;
-//        try {
-//            movieObjects = this.getMovieObjectsFromJson(movieJSONString);
-//        } catch (JSONException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
-
     /**
      * This method parses JSON from a web response and returns an array of Strings
      * describing movie details.
@@ -87,49 +74,22 @@ public final class MovieDBJsonUtils {
             String overview;
             String posterPath;
             String releaseDate;
-//            String backdropPath;
-//            Double voteAverage;
-            Double popularity;
-//            Boolean hasVideo;
-//
-//            // Get the JSON object representing the movie
-//            JSONObject movieObject = movieArray.getJSONObject(i);
-//            title = movieObject.getString(MDB_TITLE);
-//            posterPath = movieObject.getString(MDB_POSTER_PATH);
-//            backdropPath = movieObject.getString(MDB_BACKDROP_PATH);
-//            voteAverage = movieObject.getDouble(MDB_VOTE_AVERAGE);
-//            popularity = movieObject.getDouble(MDB_POPULARITY);
-//            hasVideo = movieObject.getBoolean(MDB_VIDEO);
+            Double voteAverage;
 
             // Get the JSON object representing the movie
             JSONObject movieJSONObject = movieArray.getJSONObject(i);
             title           = movieJSONObject.getString(MDB_TITLE);
-            popularity      = movieJSONObject.getDouble(MDB_POPULARITY);
             posterPath      = movieJSONObject.getString(MDB_POSTER_PATH);
             releaseDate     = movieJSONObject.getString(MDB_RELEASE_DATE);
             overview        = movieJSONObject.getString(MDB_OVERVIEW);
+            voteAverage     = movieJSONObject.getDouble(MDB_VOTE_AVERAGE);
 
-            MovieItem movieObject = new MovieItem(title, popularity, posterPath, releaseDate, overview);
+            MovieItem movieObject = new MovieItem(title, posterPath, releaseDate, overview, voteAverage);
             movieItems[i] = movieObject;
-//            parsedMovieData[i] = movieObject;
 
         }
 
         return movieItems;
     }
-
-//    /**
-//     * Public Interface
-//     */
-//
-//    public Boolean hasMovies() {
-//        return movieObjects != null && movieObjects.length > 0;
-//    }
-//
-//    public int movieCount() {
-//        return movieObjects.length;
-//    }
-//
-//    public
 
 }
