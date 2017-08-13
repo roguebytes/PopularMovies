@@ -43,7 +43,7 @@ public class MovieAdapter extends ArrayAdapter<MovieItem> {
      */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        // Gets the AndroidFlavor object from the ArrayAdapter at the appropriate position
+        // Gets the MovieItem object from the ArrayAdapter at the appropriate position
         MovieItem movieItem = getItem(position);
 
         // Adapters recycle views to AdapterViews.
@@ -55,19 +55,11 @@ public class MovieAdapter extends ArrayAdapter<MovieItem> {
         }
 
         ImageView iconView = (ImageView) convertView.findViewById(R.id.movie_item_icon);
-//        iconView.setImageResource(movieItem.image);
 
         String posterQueryPath = ApiConstants.IMAGE_BASE_URL + ApiConstants.IMAGE_DEFAULT_SIZE + movieItem.getPosterPath();
-//        URL posterUrl = NetworkUtils.buildUrl(posterQuery);
 
         Picasso.with(convertView.getContext()).load(posterQueryPath).into(iconView);
-//        Picasso.with(convertView.getContext()).load(posterUrl).into(iconView);
-//
-//        TextView versionNameView = (TextView) convertView.findViewById(R.id.list_item_version_name);
-//        versionNameView.setText(androidFlavor.versionName);
-//
-//        TextView versionNumberView = (TextView) convertView.findViewById(R.id.list_item_versionnumber_textview);
-//        versionNumberView.setText(androidFlavor.versionNumber);
+
         return convertView;
     }
 
