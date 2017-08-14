@@ -10,7 +10,7 @@ import org.json.JSONException;
 
 public class MovieManager {
 
-    MovieItem[] movieItems = null;
+    private MovieItem[] movieItems = null;
 
     public MovieManager(String movieJsonString) {
         try {

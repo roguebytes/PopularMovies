@@ -29,14 +29,13 @@ public class MainActivity extends AppCompatActivity {
 
     private MovieManager movieManager = null;
     private MovieAdapter movieAdapter = null;
-    private String sort_key = AppConstants.SORT_KEY_TOP_RATED;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        makeMovieDBSearchQuery(sort_key);
+        makeMovieDBSearchQuery(AppConstants.SORT_KEY_TOP_RATED);
     }
 
     @Override
